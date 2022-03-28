@@ -3,6 +3,7 @@
 
 <head>
     <!-- BEGIN LivePerson Monitor. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <script type="text/javascript">
         window.lpTag = window.lpTag || {}, 'undefined' == typeof window.lpTag._tagCount ? (window.lpTag = {
             wl: lpTag.wl || null,
@@ -69,6 +70,122 @@
             identities: lpTag.identities || [],
             ev: lpTag.ev || []
         }, lpTag.init()) : window.lpTag._tagCount += 1;
+
+        // Authentication JSMethod for LiveEngage
+        function lpGetAuthenticationToken(callback) {
+            if (localStorage.getItem('id_token')) {
+                var id_token = localStorage.getItem('id_token');
+
+                var decoded_jwt = jwt_decode(id_token);
+                console.log(decoded_jwt);
+                console.log("id_token= " + id_token);
+                callback(id_token);
+
+            } else {
+                webAuth.authorize();
+                console.error('LE Error - no authentication method found');
+            }
+        }
+
+        ! function a(b, c, d) {
+            function e(g, h) {
+                if (!c[g]) {
+                    if (!b[g]) {
+                        var i = "function" == typeof require && require;
+                        if (!h && i) return i(g, !0);
+                        if (f) return f(g, !0);
+                        var j = new Error("Cannot find module '" + g + "'");
+                        throw j.code = "MODULE_NOT_FOUND", j
+                    }
+                    var k = c[g] = {
+                        exports: {}
+                    };
+                    b[g][0].call(k.exports, function(a) {
+                        var c = b[g][1][a];
+                        return e(c ? c : a)
+                    }, k, k.exports, a, b, c, d)
+                }
+                return c[g].exports
+            }
+            for (var f = "function" == typeof require && require, g = 0; g < d.length; g++) e(d[g]);
+            return e
+        }({
+            1: [function(a, b, c) {
+                function d(a) {
+                    this.message = a
+                }
+
+                function e(a) {
+                    var b = String(a).replace(/=+$/, "");
+                    if (b.length % 4 == 1) throw new d("'atob' failed: The string to be decoded is not correctly encoded.");
+                    for (var c, e, g = 0, h = 0, i = ""; e = b.charAt(h++); ~e && (c = g % 4 ? 64 * c + e : e, g++ % 4) ? i += String.fromCharCode(255 & c >> (-2 * g & 6)) : 0) e = f.indexOf(e);
+                    return i
+                }
+                var f = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+                d.prototype = new Error, d.prototype.name = "InvalidCharacterError", b.exports = "undefined" != typeof window && window.atob && window.atob.bind(window) || e
+            }, {}],
+            2: [function(a, b, c) {
+                function d(a) {
+                    return decodeURIComponent(e(a).replace(/(.)/g, function(a, b) {
+                        var c = b.charCodeAt(0).toString(16).toUpperCase();
+                        return c.length < 2 && (c = "0" + c), "%" + c
+                    }))
+                }
+                var e = a("./atob");
+                b.exports = function(a) {
+                    var b = a.replace(/-/g, "+").replace(/_/g, "/");
+                    switch (b.length % 4) {
+                        case 0:
+                            break;
+                        case 2:
+                            b += "==";
+                            break;
+                        case 3:
+                            b += "=";
+                            break;
+                        default:
+                            throw "Illegal base64url string!"
+                    }
+                    try {
+                        return d(b)
+                    } catch (c) {
+                        return e(b)
+                    }
+                }
+            }, {
+                "./atob": 1
+            }],
+            3: [function(a, b, c) {
+                "use strict";
+
+                function d(a) {
+                    this.message = a
+                }
+                var e = a("./base64_url_decode");
+                d.prototype = new Error, d.prototype.name = "InvalidTokenError", b.exports = function(a, b) {
+                    if ("string" != typeof a) throw new d("Invalid token specified");
+                    b = b || {};
+                    var c = b.header === !0 ? 0 : 1;
+                    try {
+                        return JSON.parse(e(a.split(".")[c]))
+                    } catch (f) {
+                        throw new d("Invalid token specified: " + f.message)
+                    }
+                }, b.exports.InvalidTokenError = d
+            }, {
+                "./base64_url_decode": 2
+            }],
+            4: [function(a, b, c) {
+                (function(b) {
+                    var c = a("./lib/index");
+                    "function" == typeof b.window.define && b.window.define.amd ? b.window.define("jwt_decode", function() {
+                        return c
+                    }) : b.window && (b.window.jwt_decode = c)
+                }).call(this, "undefined" != typeof global ? global : "undefined" != typeof self ? self : "undefined" != typeof window ? window : {})
+            }, {
+                "./lib/index": 3
+            }]
+        }, {}, [4]);
     </script>
     <!-- END LivePerson Monitor. -->
 
@@ -81,55 +198,143 @@
             background: #FFF;
         }
     </style>
-    <link href="https://s3.amazonaws.com/sc-tasks/Assets/css/customwindow.css" rel="stylesheet">
+    <!-- link href="https://s3.amazonaws.com/sc-tasks/Assets/css/customwindow.css" rel="stylesheet" -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/8.9/auth0.min.js"></script>
+    <!-- script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script -->
 </head>
 
 <body>
     <div id="customButton"></div>
 
-    <!-- Place the LiveEngage Monitoring tag from your specific Account/site here-->
-
-    <script>
-        lpTag.sdes.push({
-            "type": "ctmrinfo",
-            "info": {
-                customerId: '562'
-            }
-        });
-        // Authentication JSMethod for LiveEngage
-        var lpGetAuthenticationToken = function(callback) {
-            console.log("inside lpGetAuthenticationToken!");
-
-            var token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDAwMDAwMSIsImlzcyI6Imh0dHBzOi8vd3d3LmxpdmVwZXJzb24uY29tIiwicmVtb3RlX3Bob3RvX3VybCI6Imh0dHBzOi8vd3d3Lmdvb2dsZS5jb20vaW1ncmVzP2ltZ3VybD1odHRwcyUzQSUyRiUyRmVuZ2FnaW5nd29tZW4uY29tLmF1JTJGd3AtY29udGVudCUyRnVwbG9hZHMlMkYyMDIwJTJGMDglMkY0MUU3MzdDNi00MTdDLTQwQ0ItODQ0OS03N0YzMEM5NzUyMDItMjUzeDM4MC5qcGVnJmltZ3JlZnVybD1odHRwcyUzQSUyRiUyRmVuZ2FnaW5nd29tZW4uY29tLmF1JTJGc3RvcmllcyUyRmplbm55LXdpbGxpYW1zLWZpcmJhbmstZ3JhbW1hci0yJTJGJnRibmlkPVdkcWxBTm5EVE5ob3dNJnZldD0xMmFoVUtFd2k5alpPazladjFBaFVWektBQ0hXMkZBc0FRTXlnQWVnVUlBUkN6QVEuLmkmZG9jaWQ9YS0xQWxWa0VGTnBucE0mdz0yNTMmaD0zODAmaXRnPTEmcT1qZW5ueSUyMHdpbGxpYW1zJnZlZD0yYWhVS0V3aTlqWk9rOVp2MUFoVVZ6S0FDSFcyRkFzQVFNeWdBZWdVSUFSQ3pBUSIsInBpY3R1cmUiOiJodHRwczovL3d3dy5nb29nbGUuY29tL2ltZ3Jlcz9pbWd1cmw9aHR0cHMlM0ElMkYlMkZlbmdhZ2luZ3dvbWVuLmNvbS5hdSUyRndwLWNvbnRlbnQlMkZ1cGxvYWRzJTJGMjAyMCUyRjA4JTJGNDFFNzM3QzYtNDE3Qy00MENCLTg0NDktNzdGMzBDOTc1MjAyLTI1M3gzODAuanBlZyZpbWdyZWZ1cmw9aHR0cHMlM0ElMkYlMkZlbmdhZ2luZ3dvbWVuLmNvbS5hdSUyRnN0b3JpZXMlMkZqZW5ueS13aWxsaWFtcy1maXJiYW5rLWdyYW1tYXItMiUyRiZ0Ym5pZD1XZHFsQU5uRFROaG93TSZ2ZXQ9MTJhaFVLRXdpOWpaT2s5WnYxQWhVVnpLQUNIVzJGQXNBUU15Z0FlZ1VJQVJDekFRLi5pJmRvY2lkPWEtMUFsVmtFRk5wbnBNJnc9MjUzJmg9MzgwJml0Zz0xJnE9amVubnklMjB3aWxsaWFtcyZ2ZWQ9MmFoVUtFd2k5alpPazladjFBaFVWektBQ0hXMkZBc0FRTXlnQWVnVUlBUkN6QVEiLCJnaXZlbl9uYW1lIjoiSmVubnkiLCJmYW1pbHlfbmFtZSI6IldpbGxpYW1zIiwiZW1haWwiOiJqZW5ueS53aWxsaWFtc0BmYWtlaWQuY29tIiwicGhvbmVfbnVtYmVyIjoiMDQ4OTgyMjIxMTEiLCJnZW5kZXIiOiJGZW1hbGUiLCJscF9zZGVzIjpbeyJ0eXBlIjoiY3RtcmluZm8iLCJpbmZvIjp7ImNzdGF0dXMiOiJMaXZlIiwiY3R5cGUiOiJHb2xkIiwiYmFsYW5jZSI6IjEwMDAwIiwiY29tcGFueVNpemUiOiIzMDAiLCJhY2NvdW50TmFtZSI6IldpbGxpYW1zIE1vdG9ycyIsInJvbGUiOiJNYXJrZXRpbmcgTWFuYWdlciJ9fSx7InR5cGUiOiJwZXJzb25hbCIsImluZm8iOnsibGFuZ3VhZ2UiOiJlbi1BVSJ9fV0sInBpY3R1cmVVcmwiOiJodHRwczovL3d3dy5nb29nbGUuY29tL2ltZ3Jlcz9pbWd1cmw9aHR0cHMlM0ElMkYlMkZlbmdhZ2luZ3dvbWVuLmNvbS5hdSUyRndwLWNvbnRlbnQlMkZ1cGxvYWRzJTJGMjAyMCUyRjA4JTJGNDFFNzM3QzYtNDE3Qy00MENCLTg0NDktNzdGMzBDOTc1MjAyLTI1M3gzODAuanBlZyZpbWdyZWZ1cmw9aHR0cHMlM0ElMkYlMkZlbmdhZ2luZ3dvbWVuLmNvbS5hdSUyRnN0b3JpZXMlMkZqZW5ueS13aWxsaWFtcy1maXJiYW5rLWdyYW1tYXItMiUyRiZ0Ym5pZD1XZHFsQU5uRFROaG93TSZ2ZXQ9MTJhaFVLRXdpOWpaT2s5WnYxQWhVVnpLQUNIVzJGQXNBUU15Z0FlZ1VJQVJDekFRLi5pJmRvY2lkPWEtMUFsVmtFRk5wbnBNJnc9MjUzJmg9MzgwJml0Zz0xJnE9amVubnklMjB3aWxsaWFtcyZ2ZWQ9MmFoVUtFd2k5alpPazladjFBaFVWektBQ0hXMkZBc0FRTXlnQWVnVUlBUkN6QVEiLCJpYXQiOjE2NDE0MzA2MTQsImV4cCI6MTY3Mjk3MDYxNH0.U-Zxm_l1Ru7lgfYi3czQ8A8W59_kVEX7bV_Dak147_nKigR5X-3o4IIiF1_KdLK5BTHF-VVLgTcbdqA_oV1SWElgiCdASpKjL2v8mx3WOd3Yv_kaHTYZvFyiozn_FgksVmH0TJl_S-ayY0wRmRAw_A0r7r-ZHg7zYjve76Cz-kg"; // Paste your JWT into this field, do not remove ""
-            if (token) {
-                console.log("got token! " + token);
-                console.log("calling callback with token...");
-                callback(token);
-            }
-        };
-    </script>
-
+    <a href="#"><button id="btn-login">Login</button></a>
+    <br>
     <center>
         <a href="02.html"><img src="01.png" width="100% alt="..."> </a>
         <div>
     </center>
-    <!-- script>
-        setTimeout(function() {
-            $("#eyecatch").fadeIn(1500);
-        }, 2000); //show after 2 seconds
-        lpTag.events.bind("lpUnifiedWindow", "state", function(data) {
-            switch (data.state) {
-                case "chatting":
-                    $("#customButton").hide();
-                    break;
-                case "ended":
-                case "Notfound":
-                    $("#customButton").show();
-                    break;
+    <script>
+        lpTag.sdes.push({
+            "type": "cart",
+            "total": 11.7,
+            "currency": "USD",
+            "numItems": 6,
+            "products": [{
+                "product": {
+                    "name": "Prod 1",
+                    "category": "Category 1",
+                    "sku": "SKU 1",
+                    "price": 7.8,
+                },
+                "quantity": 1
+            }],
+            "type": "ctmrinfo",
+            "info": {
+                customerId: '2'
             }
         });
-    </script -->
+        $('#btn-jwt').on('click', function() {
+            $('#myModal').show();
+            if (localStorage.getItem('id_token') != null) {
+                $('#jwt-container').html(localStorage.getItem('id_token'));
+            } else {
+                $('#jwt-container').html('You are not logged in! Please select \"Login\" from the top-left menu!');
+            }
+        });
+        window.addEventListener('load', function() {
+
+            webAuth = new auth0.WebAuth({
+                domain: 'terry2027.au.auth0.com',
+                clientID: 'XIAwqsk9JaMckJTk73gpKMjiVGiOKg3P',
+                responseType: 'token id_token',
+                audience: 'https://terry2027.au.auth0.com/userinfo',
+                scope: 'openid profile email',
+                redirectUri: window.location.href
+            });
+
+            var loginBtn = document.getElementById('btn-login');
+
+            loginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                webAuth.authorize();
+            });
+
+            function handleAuthentication() {
+                webAuth.parseHash(function(err, authResult) {
+                    if (authResult && authResult.accessToken && authResult.idToken) {
+                        window.location.hash = '';
+                        setSession(authResult);
+                    } else if (err) {
+                        console.log(err);
+                        alert(
+                            'Error: ' + err.error + '. Check the console for further details.'
+                        );
+                    }
+                });
+            }
+
+            function setSession(authResult) {
+                // Set the time that the access token will expire at
+                var expiresAt = JSON.stringify(
+                    authResult.expiresIn * 1000 + new Date().getTime()
+                );
+
+                var claimset = {
+                    claimset: jwt_decode(authResult.idToken)
+                };
+                console.log(claimset);
+                localStorage.setItem('access_token', authResult.accessToken);
+                localStorage.setItem('id_token', authResult.idToken);
+                localStorage.setItem('expires_at', authResult.expiresAt);
+                /* $.post('/signAuth0', {
+                    data: JSON.stringify(claimset)
+                }, function(data) {
+                    console.log(data);
+                    localStorage.setItem('access_token', authResult.accessToken);
+                    localStorage.setItem('id_token', data.token);
+                    localStorage.setItem('expires_at', expiresAt);
+
+                }); */
+            }
+
+            handleAuthentication();
+        });
+        (function() {
+            lpTag.events.bind("lpUnifiedWindow", "state", function(data) {
+                switch (data.state) {
+                    case "chatting":
+                        $("#customButton").hide();
+                        break;
+                    case "ended":
+                    case "Notfound":
+                        $("#customButton").show();
+                        break;
+                }
+            });
+            //show login thing
+            /* setTimeout(function() {
+                if (localStorage.getItem('id_token') == null) {
+                    alert('Please click on the \"Login\" button for authenticated messaging!');
+                }
+            }, 1000);
+            setTimeout(function() {
+                $("#eyecatch").fadeIn(1500);
+            }, 7500); */
+            /* if (autoOpenId) {
+                lpTag.events.bind("LP_OFFERS", "OFFER_IMPRESSION", function(data) {
+                    console.log(data);
+                    if (data.engagementId.toString() === autoOpenId) {
+                        console.log('autoclick');
+                        setTimeout(function() {
+                            lpTag.taglets.rendererStub.click(autoOpenId);
+                        }, 1000);
+                    }
+                });
+            } */
+        })();
+    </script>
+
+
 
 </body>
 
