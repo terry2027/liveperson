@@ -1,7 +1,7 @@
 exports.handler = function(context, event, callback) {
     // REPLACE THESE
-    let ivr_message_url = "https://terry2027.github.io/audio/offer_message.mp3";
-    let sms_sent_message_url = "https://terry2027.github.io/audio/sms_sent.mp3";
+    let ivr_message_url = "https://terry2027.github.io/audio/IVR/offer_message.mp3";
+    let sms_sent_message_url = "https://terry2027.github.io/audio/IVR/sms_sent.mp3";
     let deflection_path = "https://indigo-moorhen-8243.twil.io/deflection";
     let encoded_auth_details = "QUMzYThhMjQ3MzUwNDQ5ZjNiOWMzNTUyYTU1MTExNzExNDo2YjUyYzM2ODMwZTAyZDQ3ZjUzZWQxMTQ2MTJkNDFkYw==";
 
