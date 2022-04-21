@@ -98,6 +98,21 @@
     <meta name="next-head-count" content="41" />
     <script async="" src="https://pay.google.com/gp/p/js/pay.js"></script>
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-162262657-4"></script>
+    <script data-testid="google-analytics">
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-162262657-4', {
+            currency: 'AUD',
+        });
+        gtag('config', 'AW-1015648522', {
+            'send_page_view': false
+        });
+        gtag('config', 'DC-4309509');
+    </script>
     <script data-testid="facebook-pixel">
         ! function(f, b, e, v, n, t, s) {
             if (f.fbq) return;
@@ -119,10 +134,8 @@
             'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '3087531188029246');
         fbq('track', 'PageView');
-    </script><noscript><img
-                height="1" width="1" style="display:none"
-                src="https://www.facebook.com/tr?id=3087531188029246&ev=PageView&noscript=1"
-                /></noscript>
+    </script><noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=3087531188029246&ev=PageView&noscript=1" /></noscript>
     <script data-testid="hotjar">
         (function(h, o, t, j, a, r) {
             h.hj = h.hj || function() {
@@ -138,6 +151,14 @@
             r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
             a.appendChild(r);
         })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+    <script data-testid="adobe-analytics">
+        window.digitalData = {
+            "page": {
+                "pageName": "home",
+                "siteSection": "home"
+            }
+        };
     </script>
     <script async="" src="//assets.adobedtm.com/c994631cb429/930489b06e5e/launch-278d5493a9a5.min.js"></script>
     <script data-testid="snapchat-pixel">
@@ -3141,7 +3162,7 @@
                     <div class="sc-5bfc54d1-0 sc-93a5572f-0 hMAIve cyCbYY">
                         <div class="sc-5bfc54d1-0 fkCbAf"><a class="sc-4e4f8c21-0 JiVWI sc-1b931e94-2
                                     Rebhr sc-7b483f94-1 bcBIed" href="/menu">Order
-                                    Food</a></div>
+                                Food</a></div>
                         <a class="sc-4e4f8c21-0 ghWpbo
                                 sc-a91f2056-0 fBaAYm" href="/sign-in">
                             <p color="greyPrimary" display="block" font-weight="bold" class="sc-455a01f7-0
@@ -3151,13 +3172,11 @@
                 </div>
                 <div class="sc-d832d68-0 jbCBmF sc-ef43e763-0 kdHieW" display="[object Object]">
                     <div width="0.3333333333333333" class="sc-5bfc54d1-0
-                            sc-93a5572f-0 dLIOlS gtIoSw"><button type="button" title="menu" class="sc-ef43e763-1 iXXxkt"><svg
-                                    viewBox="0 0 24 24" version="1.1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24px" height="24px"
-                                    class="sc-640a0084-0 hfhopG"
-                                    data-testid="hamburger"><title>Hamburger</title><path
-                                        d="M3 8H21C21.2652 8 21.5196 7.89464
+                            sc-93a5572f-0 dLIOlS gtIoSw"><button type="button" title="menu" class="sc-ef43e763-1 iXXxkt"><svg viewBox="0 0 24 24" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                class="sc-640a0084-0 hfhopG" data-testid="hamburger">
+                                <title>Hamburger</title>
+                                <path d="M3 8H21C21.2652 8 21.5196 7.89464
                                         21.7071 7.70711C21.8946 7.51957 22
                                         7.26522 22 7C22 6.73478 21.8946 6.48043
                                         21.7071 6.29289C21.5196 6.10536 21.2652
@@ -3173,7 +3192,8 @@
                                         21.7071 17.7071C21.8946 17.5196 22
                                         17.2652 22 17C22 16.7348 21.8946 16.4804
                                         21.7071 16.2929C21.5196 16.1054 21.2652
-                                        16 21 16Z"></path></svg></button></div>
+                                        16 21 16Z"></path>
+                            </svg></button></div>
                     <div width="0.3333333333333333" class="sc-5bfc54d1-0
                             sc-93a5572f-0 bcMETG gtIoSw">
                         <a href="/" class="sc-4e4f8c21-0 JiVWI"><img src="/static/images/brand/logo.svg" alt="Nando&#x27;s Logo" width="100" /></a>
@@ -3187,7 +3207,8 @@
                         </a>
                         <a class="sc-4e4f8c21-0 ghWpbo sc-a91f2056-0
                                 fBaAYm" href="/sign-in">
-                            <p color="greyPrimary" display="block" font-weight="bold" class="sc-455a01f7-0 kSYlUo">Sign In</p>
+                            <p color="greyPrimary" display="block" font-weight="bold" class="sc-455a01f7-0 kSYlUo">Sign In
+                            </p>
                         </a>
                     </div>
                 </div>
@@ -3267,19 +3288,26 @@
                                     Object]" class="sc-5bfc54d1-0 sc-78573766-0
                                     legjzG cKwWAq sc-bef63889-0 coDlMg" offset="0%,0%,16.666666666666664%,0%">
                                 <div class="sc-5bfc54d1-0 sc-93a5572f-0
-                                        iHpeek cyCbYY"><svg viewBox="0 0 167 11" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineDescending"><title>Line
-                                                Descending</title><path d="M167
+                                        iHpeek cyCbYY"><svg viewBox="0 0 167 11" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineDescending">
+                                        <title>Line
+                                            Descending</title>
+                                        <path d="M167
                                                 10.21L136.48 10.6H122.9L2.1
                                                 6.79L0 0L111.08 2.49L118.26
                                                 4.2L131 3.42L138.61 3.81L143.7
-                                                3L167 4.69V10.21Z"></path></svg>
+                                                3L167 4.69V10.21Z"></path>
+                                    </svg>
                                     <h1 class="sc-a08b8eff-0 fqYYwR">Offer alert!
-                                    </h1><svg viewBox="0 0 167 17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineAscending"><title>Line
-                                                Ascending</title><path d="M0
+                                    </h1><svg viewBox="0 0 167 17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineAscending">
+                                        <title>Line
+                                            Ascending</title>
+                                        <path d="M0
                                                 10.79L30.42 7.91L43.7 6.59L164.5
                                                 0L167 6.3L56.21 13.3L48.69
                                                 12.47L36.19 14.57H28.81L23.81
-                                                15.79L0.49 16.21L0 10.79Z"></path></svg></div>
+                                                15.79L0.49 16.21L0 10.79Z"></path>
+                                    </svg>
+                                </div>
                                 <div class="sc-d762dc29-3 bmJcss">
                                     <div class="sc-b7a57f91-0 cxrnMd">
                                         <p>Grab a 1/2 PERi PERi chicken, reg side &amp; reg drink for only $16*
@@ -3288,7 +3316,8 @@
                                     </div>
                                 </div><a href="https://www.nandos.com.au/menu" class="sc-4e4f8c21-0 iHOrYA
                                         sc-1b931e94-2 bNbpvO undefined">Order
-                                        now</a></div>
+                                    now</a>
+                            </div>
                         </div>
                     </div>
                     <div width="[object Object]" class="sc-bb283c49-1
@@ -3310,15 +3339,17 @@
                                         <div class="sc-5bfc54d1-0
                                                 sc-a06ac6d2-0 haVymS eKgOAo">
                                             <h3 class="sc-a08b8eff-2
-                                                    ffmouv">Our Menu</h3><svg viewBox="0 0 167 17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 hJUdoR" data-testid="lineAscending"><title>Line
-                                                        Ascending</title><path
-                                                        d="M0 10.79L30.42
+                                                    ffmouv">Our Menu</h3><svg viewBox="0 0 167 17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 hJUdoR" data-testid="lineAscending">
+                                                <title>Line
+                                                    Ascending</title>
+                                                <path d="M0 10.79L30.42
                                                         7.91L43.7 6.59L164.5
                                                         0L167 6.3L56.21
                                                         13.3L48.69 12.47L36.19
                                                         14.57H28.81L23.81
                                                         15.79L0.49 16.21L0
-                                                        10.79Z"></path></svg>
+                                                        10.79Z"></path>
+                                            </svg>
                                             <p font-weight="bold" class="sc-7000b91a-0
                                                     czGeRt">All of our chicken is marinated for 24 hours</p>
                                         </div>
@@ -3355,9 +3386,10 @@
                                                         sc-93a5572f-0 lbgwhH
                                                         jFjrYC"><svg viewBox="0
                                                             0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0
-                                                            jBQxbq" data-testid="menuOrange"><title>Menu
-                                                                Orange</title><path
-                                                                d="M5.09892
+                                                            jBQxbq" data-testid="menuOrange">
+                                                        <title>Menu
+                                                            Orange</title>
+                                                        <path d="M5.09892
                                                                 8C6.72669
                                                                 9.80122 7.74085
                                                                 12.0708 7.99588
@@ -3469,8 +3501,8 @@
                                                                 1.00183C12.8828
                                                                 0.997006 12.8982
                                                                 1.00195 12.9066
-                                                                1.01393Z"
-                                                                fill="#FF8201"></path></svg>
+                                                                1.01393Z" fill="#FF8201"></path>
+                                                    </svg>
                                                     <h3 class="sc-a08b8eff-2
                                                             ffmouv">Flame Grilled PERi-PERi Chicken
                                                     </h3>
@@ -3510,9 +3542,10 @@
                                                         sc-93a5572f-0 lbgwhH
                                                         jFjrYC"><svg viewBox="0
                                                             0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0
-                                                            jBQxbq" data-testid="menuGreen"><title>Menu
-                                                                Green</title><path
-                                                                d="M19.7718
+                                                            jBQxbq" data-testid="menuGreen">
+                                                        <title>Menu
+                                                            Green</title>
+                                                        <path d="M19.7718
                                                                 1.00085C19.8059
                                                                 0.99752 19.8403
                                                                 1.00399 19.8709
@@ -3661,8 +3694,8 @@
                                                                 1.07613C4.07362
                                                                 1.03829 4.10273
                                                                 1.00801 4.14058
-                                                                1.00135Z"
-                                                                fill="#78B400"></path></svg>
+                                                                1.00135Z" fill="#78B400"></path>
+                                                    </svg>
                                                     <h3 class="sc-a08b8eff-2
                                                             ffmouv">Burgers, Pitas &amp; Wraps</h3>
                                                 </div>
@@ -3701,9 +3734,10 @@
                                                         sc-93a5572f-0 lbgwhH
                                                         jFjrYC"><svg viewBox="0
                                                             0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0
-                                                            jBQxbq" data-testid="menuYellow"><title>Menu
-                                                                Yellow</title><path
-                                                                d="M3.87294
+                                                            jBQxbq" data-testid="menuYellow">
+                                                        <title>Menu
+                                                            Yellow</title>
+                                                        <path d="M3.87294
                                                                 6.83782C3.90511
                                                                 6.84149 3.93359
                                                                 6.8577 3.95027
@@ -3875,8 +3909,8 @@
                                                                 2.51705C10.4068
                                                                 2.02991 10.8751
                                                                 1.62452 11.4137
-                                                                1.32849Z"
-                                                                fill="#FFDF05"></path></svg>
+                                                                1.32849Z" fill="#FFDF05"></path>
+                                                    </svg>
                                                     <h3 class="sc-a08b8eff-2
                                                             ffmouv">Salads &amp; Bowls
                                                     </h3>
@@ -3916,9 +3950,10 @@
                                                         sc-93a5572f-0 lbgwhH
                                                         jFjrYC"><svg viewBox="0
                                                             0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0
-                                                            jBQxbq" data-testid="menuPink"><title>Menu
-                                                                Pink</title><path
-                                                                d="M14.1
+                                                            jBQxbq" data-testid="menuPink">
+                                                        <title>Menu
+                                                            Pink</title>
+                                                        <path d="M14.1
                                                                 2.50969C18.3688
                                                                 3.74514 19.6832
                                                                 7.27896 19.4052
@@ -4093,8 +4128,8 @@
                                                                 1.00183C10.8845
                                                                 0.997006 10.8999
                                                                 1.00195 10.9083
-                                                                1.01393Z"
-                                                                fill="#E7007D"></path></svg>
+                                                                1.01393Z" fill="#E7007D"></path>
+                                                    </svg>
                                                     <h3 class="sc-a08b8eff-2
                                                             ffmouv">Snacks &amp; Sides
                                                     </h3>
@@ -4114,16 +4149,19 @@
                                                     eKgOAo">
                                                 <h3 class="sc-a08b8eff-2
                                                         ffmouv">View Full Menu</h3><svg viewBox="0 0 167 17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0
-                                                        hJUdoR" data-testid="lineAscending"><title>Line
-                                                            Ascending</title><path
-                                                            d="M0 10.79L30.42
+                                                        hJUdoR" data-testid="lineAscending">
+                                                    <title>Line
+                                                        Ascending</title>
+                                                    <path d="M0 10.79L30.42
                                                             7.91L43.7 6.59L164.5
                                                             0L167 6.3L56.21
                                                             13.3L48.69
                                                             12.47L36.19
                                                             14.57H28.81L23.81
                                                             15.79L0.49 16.21L0
-                                                            10.79Z"></path></svg></div>
+                                                            10.79Z"></path>
+                                                </svg>
+                                            </div>
                                         </div>
                                     </a>
                                 </div>
@@ -4207,25 +4245,34 @@
                                     Object]" class="sc-5bfc54d1-0 sc-78573766-0
                                     cqRYi fZFGUu sc-bef63889-0 coDlMg" offset="0%,0%,16.666666666666664%,8.333333333333332%">
                                 <div class="sc-5bfc54d1-0 sc-93a5572f-0
-                                        kfeVJn cyCbYY"><svg viewBox="0 0 167 11" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineDescending"><title>Line
-                                                Descending</title><path d="M167
+                                        kfeVJn cyCbYY"><svg viewBox="0 0 167 11" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineDescending">
+                                        <title>Line
+                                            Descending</title>
+                                        <path d="M167
                                                 10.21L136.48 10.6H122.9L2.1
                                                 6.79L0 0L111.08 2.49L118.26
                                                 4.2L131 3.42L138.61 3.81L143.7
-                                                3L167 4.69V10.21Z"></path></svg>
-                                    <h2 class="sc-a08b8eff-1 gAQMhw">Dining in at Nando&#x27;s</h2><svg viewBox="0 0 167 17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineAscending"><title>Line
-                                                Ascending</title><path d="M0
+                                                3L167 4.69V10.21Z"></path>
+                                    </svg>
+                                    <h2 class="sc-a08b8eff-1 gAQMhw">Dining in at Nando&#x27;s</h2><svg viewBox="0 0 167 17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineAscending">
+                                        <title>Line
+                                            Ascending</title>
+                                        <path d="M0
                                                 10.79L30.42 7.91L43.7 6.59L164.5
                                                 0L167 6.3L56.21 13.3L48.69
                                                 12.47L36.19 14.57H28.81L23.81
-                                                15.79L0.49 16.21L0 10.79Z"></path></svg></div>
+                                                15.79L0.49 16.21L0 10.79Z"></path>
+                                    </svg>
+                                </div>
                                 <div class="sc-d762dc29-3 dmcbRH">
                                     <div class="sc-b7a57f91-0 cxrnMd">
-                                        <p>Check here to see if your local Nando's is open for dine-in and other FAQs!</p>
+                                        <p>Check here to see if your local Nando's is open for dine-in and other FAQs!
+                                        </p>
                                     </div>
                                 </div><a class="sc-4e4f8c21-0 iHOrYA
                                         sc-1b931e94-2 bNbpvO undefined" href="/restaurant-openings">Find out
-                                        here</a></div>
+                                    here</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -4306,25 +4353,33 @@
                                     Object]" class="sc-5bfc54d1-0 sc-78573766-0
                                     cqRYi fZFGUu sc-bef63889-0 coDlMg" offset="0%,0%,16.666666666666664%,8.333333333333332%">
                                 <div class="sc-5bfc54d1-0 sc-93a5572f-0
-                                        kfeVJn cyCbYY"><svg viewBox="0 0 167 11" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineDescending"><title>Line
-                                                Descending</title><path d="M167
+                                        kfeVJn cyCbYY"><svg viewBox="0 0 167 11" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineDescending">
+                                        <title>Line
+                                            Descending</title>
+                                        <path d="M167
                                                 10.21L136.48 10.6H122.9L2.1
                                                 6.79L0 0L111.08 2.49L118.26
                                                 4.2L131 3.42L138.61 3.81L143.7
-                                                3L167 4.69V10.21Z"></path></svg>
+                                                3L167 4.69V10.21Z"></path>
+                                    </svg>
                                     <h2 class="sc-a08b8eff-1 gAQMhw">We&#x27;re hiring
-                                    </h2><svg viewBox="0 0 167 17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineAscending"><title>Line
-                                                Ascending</title><path d="M0
+                                    </h2><svg viewBox="0 0 167 17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineAscending">
+                                        <title>Line
+                                            Ascending</title>
+                                        <path d="M0
                                                 10.79L30.42 7.91L43.7 6.59L164.5
                                                 0L167 6.3L56.21 13.3L48.69
                                                 12.47L36.19 14.57H28.81L23.81
-                                                15.79L0.49 16.21L0 10.79Z"></path></svg></div>
+                                                15.79L0.49 16.21L0 10.79Z"></path>
+                                    </svg>
+                                </div>
                                 <div class="sc-d762dc29-3 dmcbRH">
                                     <div class="sc-b7a57f91-0 cxrnMd">
                                         <p>We're looking for brilliant Shift Leaders, Team Members and Restaurant Managers to join our wonderful Nando's family.</p>
                                     </div>
                                 </div><a class="sc-4e4f8c21-0 iHOrYA
-                                        sc-1b931e94-2 bNbpvO undefined" href="/careers">Join the team</a></div>
+                                        sc-1b931e94-2 bNbpvO undefined" href="/careers">Join the team</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -4404,27 +4459,36 @@
                                     Object]" class="sc-5bfc54d1-0 sc-78573766-0
                                     cqRYi fZFGUu sc-bef63889-0 coDlMg" offset="0%,0%,16.666666666666664%,8.333333333333332%">
                                 <div class="sc-5bfc54d1-0 sc-93a5572f-0
-                                        kfeVJn cyCbYY"><svg viewBox="0 0 167 11" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineDescending"><title>Line
-                                                Descending</title><path d="M167
+                                        kfeVJn cyCbYY"><svg viewBox="0 0 167 11" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineDescending">
+                                        <title>Line
+                                            Descending</title>
+                                        <path d="M167
                                                 10.21L136.48 10.6H122.9L2.1
                                                 6.79L0 0L111.08 2.49L118.26
                                                 4.2L131 3.42L138.61 3.81L143.7
-                                                3L167 4.69V10.21Z"></path></svg>
+                                                3L167 4.69V10.21Z"></path>
+                                    </svg>
                                     <h2 class="sc-a08b8eff-1 gAQMhw">PERi-PERi is the heart &amp; soul of Nando&#x27;s
                                     </h2><svg viewBox="0 0
-                                            167 17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineAscending"><title>Line
-                                                Ascending</title><path d="M0
+                                            167 17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineAscending">
+                                        <title>Line
+                                            Ascending</title>
+                                        <path d="M0
                                                 10.79L30.42 7.91L43.7 6.59L164.5
                                                 0L167 6.3L56.21 13.3L48.69
                                                 12.47L36.19 14.57H28.81L23.81
-                                                15.79L0.49 16.21L0 10.79Z"></path></svg></div>
+                                                15.79L0.49 16.21L0 10.79Z"></path>
+                                    </svg>
+                                </div>
                                 <div class="sc-d762dc29-3 hCXEvz">
                                     <div class="sc-b7a57f91-0 cxrnMd">
                                         <p>For centuries, the people of Southeast Africa have used PERi-PERi to bring fire to their food. It is in Mozambique's rich soil and blistering sunshine that the African Bird's Eye Chilli grows to its fiery best.
-                                            When Portuguese explorers arrived there, they were enchanted by its flavour.</p>
+                                            When Portuguese explorers arrived there, they were enchanted by its flavour.
+                                        </p>
                                     </div>
                                 </div><a class="sc-4e4f8c21-0 iHOrYA
-                                        sc-1b931e94-2 bNbpvO undefined" href="/our-story">Find out more</a></div>
+                                        sc-1b931e94-2 bNbpvO undefined" href="/our-story">Find out more</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -4503,20 +4567,27 @@
                                     Object]" class="sc-5bfc54d1-0 sc-78573766-0
                                     cqRYi fZFGUu sc-bef63889-0 coDlMg" offset="0%,0%,16.666666666666664%,8.333333333333332%">
                                 <div class="sc-5bfc54d1-0 sc-93a5572f-0
-                                        kfeVJn cyCbYY"><svg viewBox="0 0 167 11" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineDescending"><title>Line
-                                                Descending</title><path d="M167
+                                        kfeVJn cyCbYY"><svg viewBox="0 0 167 11" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineDescending">
+                                        <title>Line
+                                            Descending</title>
+                                        <path d="M167
                                                 10.21L136.48 10.6H122.9L2.1
                                                 6.79L0 0L111.08 2.49L118.26
                                                 4.2L131 3.42L138.61 3.81L143.7
-                                                3L167 4.69V10.21Z"></path></svg>
+                                                3L167 4.69V10.21Z"></path>
+                                    </svg>
                                     <h2 class="sc-a08b8eff-1 gAQMhw">Eat up. Earn points. PERi-Perks rewards your appetite.
                                     </h2><svg viewBox="0 0 167
-                                            17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineAscending"><title>Line
-                                                Ascending</title><path d="M0
+                                            17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineAscending">
+                                        <title>Line
+                                            Ascending</title>
+                                        <path d="M0
                                                 10.79L30.42 7.91L43.7 6.59L164.5
                                                 0L167 6.3L56.21 13.3L48.69
                                                 12.47L36.19 14.57H28.81L23.81
-                                                15.79L0.49 16.21L0 10.79Z"></path></svg></div>
+                                                15.79L0.49 16.21L0 10.79Z"></path>
+                                    </svg>
+                                </div>
                                 <div class="sc-d762dc29-3 hCXEvz">
                                     <div class="sc-b7a57f91-0 cxrnMd">
                                         <ul>
@@ -4526,7 +4597,8 @@
                                         </ul>
                                     </div>
                                 </div><a href="https://www.nandos.com.au/create-account" class="sc-4e4f8c21-0 iHOrYA
-                                        sc-1b931e94-2 bNbpvO undefined">Join now</a></div>
+                                        sc-1b931e94-2 bNbpvO undefined">Join now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -4606,26 +4678,34 @@
                                     Object]" class="sc-5bfc54d1-0 sc-78573766-0
                                     cqRYi fZFGUu sc-bef63889-0 coDlMg" offset="0%,0%,16.666666666666664%,8.333333333333332%">
                                 <div class="sc-5bfc54d1-0 sc-93a5572f-0
-                                        kfeVJn cyCbYY"><svg viewBox="0 0 167 11" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineDescending"><title>Line
-                                                Descending</title><path d="M167
+                                        kfeVJn cyCbYY"><svg viewBox="0 0 167 11" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineDescending">
+                                        <title>Line
+                                            Descending</title>
+                                        <path d="M167
                                                 10.21L136.48 10.6H122.9L2.1
                                                 6.79L0 0L111.08 2.49L118.26
                                                 4.2L131 3.42L138.61 3.81L143.7
-                                                3L167 4.69V10.21Z"></path></svg>
+                                                3L167 4.69V10.21Z"></path>
+                                    </svg>
                                     <h2 class="sc-a08b8eff-1 gAQMhw">PERi-PERi inspired recipes</h2><svg viewBox="0
-                                            0 167 17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineAscending"><title>Line
-                                                Ascending</title><path d="M0
+                                            0 167 17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineAscending">
+                                        <title>Line
+                                            Ascending</title>
+                                        <path d="M0
                                                 10.79L30.42 7.91L43.7 6.59L164.5
                                                 0L167 6.3L56.21 13.3L48.69
                                                 12.47L36.19 14.57H28.81L23.81
-                                                15.79L0.49 16.21L0 10.79Z"></path></svg></div>
+                                                15.79L0.49 16.21L0 10.79Z"></path>
+                                    </svg>
+                                </div>
                                 <div class="sc-d762dc29-3 dmcbRH">
                                     <div class="sc-b7a57f91-0 cxrnMd">
                                         <p>Looking for some recipe inspiration? Breakfast, lunch, dinner or a snack, we've got you covered with some PERi-PERi inspired creations.
                                         </p>
                                     </div>
                                 </div><a class="sc-4e4f8c21-0 iHOrYA
-                                        sc-1b931e94-2 bNbpvO undefined" href="/recipes">View our recipes</a></div>
+                                        sc-1b931e94-2 bNbpvO undefined" href="/recipes">View our recipes</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -4704,20 +4784,27 @@
                                     Object]" class="sc-5bfc54d1-0 sc-78573766-0
                                     cqRYi fZFGUu sc-bef63889-0 coDlMg" offset="0%,0%,16.666666666666664%,8.333333333333332%">
                                 <div class="sc-5bfc54d1-0 sc-93a5572f-0
-                                        kfeVJn cyCbYY"><svg viewBox="0 0 167 11" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineDescending"><title>Line
-                                                Descending</title><path d="M167
+                                        kfeVJn cyCbYY"><svg viewBox="0 0 167 11" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineDescending">
+                                        <title>Line
+                                            Descending</title>
+                                        <path d="M167
                                                 10.21L136.48 10.6H122.9L2.1
                                                 6.79L0 0L111.08 2.49L118.26
                                                 4.2L131 3.42L138.61 3.81L143.7
-                                                3L167 4.69V10.21Z"></path></svg>
+                                                3L167 4.69V10.21Z"></path>
+                                    </svg>
                                     <h2 class="sc-a08b8eff-1 gAQMhw">Catering Packages
                                     </h2><svg viewBox="0 0 167
-                                            17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineAscending"><title>Line
-                                                Ascending</title><path d="M0
+                                            17" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0 gDToXb" data-testid="lineAscending">
+                                        <title>Line
+                                            Ascending</title>
+                                        <path d="M0
                                                 10.79L30.42 7.91L43.7 6.59L164.5
                                                 0L167 6.3L56.21 13.3L48.69
                                                 12.47L36.19 14.57H28.81L23.81
-                                                15.79L0.49 16.21L0 10.79Z"></path></svg></div>
+                                                15.79L0.49 16.21L0 10.79Z"></path>
+                                    </svg>
+                                </div>
                                 <div class="sc-d762dc29-3 dmcbRH">
                                     <div class="sc-b7a57f91-0 cxrnMd">
                                         <p>Need to feed the crew?</p>
@@ -4726,16 +4813,18 @@
                                 </div><a href="https://catering.nandos.com.au/site" target="_blank" rel="noreferrer
                                         noopener" class="sc-4e4f8c21-0 iHOrYA
                                         sc-1b931e94-2 bNbpvO undefined">View
-                                        catering packages</a></div>
+                                    catering packages</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </main>
             <div class="sc-5bfc54d1-0 ldEinq">
                 <div class="sc-8e442ab9-0
-                        lhBpmM"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="sc-8e442ab9-1 UBpSN"><polygon fill="white"
-                                points="100,0 0,100 100,100"></polygon><polygon
-                                fill="#ffd7a6" points="0,0 0,100 5,95"></polygon></svg></div>
+                        lhBpmM"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="sc-8e442ab9-1 UBpSN">
+                        <polygon fill="white" points="100,0 0,100 100,100"></polygon>
+                        <polygon fill="#ffd7a6" points="0,0 0,100 5,95"></polygon>
+                    </svg></div>
                 <div class="sc-5bfc54d1-0 jQwUGk">
                     <div class="sc-d832d68-0
                             eEVSlS">
@@ -4789,15 +4878,11 @@
                                         jiVrgJ jqAGNj" offset=""><a href="https://www.facebook.com/nandosaus" target="_blank" rel="noopener
                                             noreferrer" title="Nando’s on
                                             Facebook" class="sc-4e4f8c21-0 JiVWI
-                                            sc-bc0b106f-3 jeIyUA"><svg
-                                                viewBox="0 0 11 20"
-                                                version="1.1"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="24px" height="24px"
-                                                class="sc-640a0084-0
-                                                sc-bc0b106f-4 gDToXb dODNvP"
-                                                data-testid="facebook"><title>Facebook</title><path
-                                                    d="M9.12,3.32 L11,3.32
+                                            sc-bc0b106f-3 jeIyUA"><svg viewBox="0 0 11 20" version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0
+                                                sc-bc0b106f-4 gDToXb dODNvP" data-testid="facebook">
+                                            <title>Facebook</title>
+                                            <path d="M9.12,3.32 L11,3.32
                                                     L11,0.14
                                                     C10.0897513,0.0453470166
                                                     9.17515569,-0.0013841466
@@ -4810,18 +4895,15 @@
                                                     L7.36,10.88 L10.42,10.88
                                                     L10.88,7.32 L7.36,7.32
                                                     L7.36,5.05 C7.36,4 7.64,3.32
-                                                    9.12,3.32 Z"></path></svg></a><a href="https://www.instagram.com/nandosaus" target="_blank" rel="noopener
+                                                    9.12,3.32 Z"></path>
+                                        </svg></a><a href="https://www.instagram.com/nandosaus" target="_blank" rel="noopener
                                             noreferrer" title="Nando’s on
                                             Instagram" class="sc-4e4f8c21-0
-                                            JiVWI sc-bc0b106f-3 jeIyUA"><svg
-                                                viewBox="0 0 20 20"
-                                                version="1.1"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="24px" height="24px"
-                                                class="sc-640a0084-0
-                                                sc-bc0b106f-4 gDToXb dODNvP"
-                                                data-testid="instagram"><title>Instagram</title><path
-                                                    d="M15.34,3.46 L15.34,3.46
+                                            JiVWI sc-bc0b106f-3 jeIyUA"><svg viewBox="0 0 20 20" version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0
+                                                sc-bc0b106f-4 gDToXb dODNvP" data-testid="instagram">
+                                            <title>Instagram</title>
+                                            <path d="M15.34,3.46 L15.34,3.46
                                                     C14.8546453,3.46
                                                     14.4170818,3.75237061
                                                     14.2313446,4.20077988
@@ -4972,19 +5054,15 @@
                                                     12.9791617,11.7301694
                                                     12.3546656,12.3546656
                                                     C11.7301694,12.9791617
-                                                    10.8831709,13.33 10,13.33 Z"
-                                                    id="Shape"></path></svg></a><a href="https://twitter.com/nandosaus" target="_blank" rel="noopener
+                                                    10.8831709,13.33 10,13.33 Z" id="Shape"></path>
+                                        </svg></a><a href="https://twitter.com/nandosaus" target="_blank" rel="noopener
                                             noreferrer" title="Nando’s on
                                             Twitter" class="sc-4e4f8c21-0 JiVWI
-                                            sc-bc0b106f-3 jeIyUA"><svg
-                                                viewBox="0 0 20 20"
-                                                version="1.1"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="24px" height="24px"
-                                                class="sc-640a0084-0
-                                                sc-bc0b106f-4 gDToXb dODNvP"
-                                                data-testid="twitter"><title>Twitter</title><path
-                                                    d="M20,2.8
+                                            sc-bc0b106f-3 jeIyUA"><svg viewBox="0 0 20 20" version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="sc-640a0084-0
+                                                sc-bc0b106f-4 gDToXb dODNvP" data-testid="twitter">
+                                            <title>Twitter</title>
+                                            <path d="M20,2.8
                                                     C19.2483371,3.12609476
                                                     18.4534278,3.34166339
                                                     17.64,3.44
@@ -5041,7 +5119,8 @@
                                                     18,4.92
                                                     C18.7846953,4.33481081
                                                     19.4614745,3.61742488 20,2.8
-                                                    L20,2.8 Z" id="Path"></path></svg></a></div>
+                                                    L20,2.8 Z" id="Path"></path>
+                                        </svg></a></div>
                                 <div class="sc-5bfc54d1-0 sc-78573766-0
                                         dDebsq jqAGNj" offset="">
                                     <div class="sc-5bfc54d1-0 sc-93a5572f-0
@@ -5065,7 +5144,8 @@
                                         bsFuTo jqAGNj" offset="">
                                     <p color="grey300" class="sc-7000b91a-0
                                             sc-bc0b106f-1 gKTesu cpAWKG">© Copyright Nando&#x27;s
-                                        <!-- -->2022</p>
+                                        <!-- -->2022
+                                    </p>
                                 </div>
                             </div>
                         </div>
