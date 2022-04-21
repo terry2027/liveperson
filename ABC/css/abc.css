@@ -7,6 +7,10 @@ img {
     object-fit: none;
 }
 
+#object-position-right {
+    object-position: right;
+}
+
 #object-position-1 {
     object-position: 10px;
 }
