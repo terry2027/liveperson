@@ -1,12 +1,3 @@
-img {
-    width: 300px;
-    height: 250px;
-    border: 1px solid black;
-    background-color: silver;
-    margin-right: 1em;
-    object-fit: none;
-}
-
 #object-position-right {
     position: fixed;
     top: 500px;
