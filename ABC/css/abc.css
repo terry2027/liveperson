@@ -8,7 +8,9 @@ img {
 }
 
 #object-position-right {
-    object-position: right;
+    position: fixed;
+    top: 500px;
+    right: 5px;
 }
 
 #object-position-1 {
