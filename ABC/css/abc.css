@@ -1,5 +1,5 @@
 #object-position-right {
-    position: fixed;
+    position: sticky;
     top: 300px;
     right: 5px;
 }
@@ -10,4 +10,13 @@
 
 #object-position-2 {
     object-position: 100% 10%;
+}
+
+.right-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
 }
