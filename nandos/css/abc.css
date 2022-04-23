@@ -14,9 +14,16 @@
 
 .right-screen {
     display: flex;
-    flex-direction: column;
-    justify-content: right;
+    flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
     text-align: center;
     min-height: 100vh;
+}
+
+div.fixed {
+    position: fixed;
+    top: 300px;
+    right: 0;
+    width: 128px;
 }
