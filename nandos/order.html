@@ -51,7 +51,42 @@
                         },
                         "buttons": {
                             "submit": {
-                                "title": "PERi Me!!!"
+                                "title": "PERi Me!!!",
+                                "click": submitForm = async function() {
+                                    // Get data from query string
+                                    const queryParams = new URLSearchParams(document.location.search);
+                                    const userId = queryParams.get('userId');
+                                    const conversationId = queryParams.get('convId');
+                                    const botId = queryParams.get('botId');
+
+                                    // Get data from form
+                                    const name = document.querySelector('input[name="Name"]').value;
+                                    const feedback = document.querySelector('input[name="Feedback"]').value;
+                                    const ranking = document.querySelector('input[name="Ranking"]').value;
+
+                                    // use correct domain for your region
+                                    const domain = 'https://sy.bc-intg.liveperson.net/thirdparty-services-0.1/webview';
+                                    // encode auth string
+                                    const authString = `${conversationId} || ${botId}`;
+                                    const auth = await sha256(authString);
+
+                                    const res = await postData(domain, auth, {
+                                        botId,
+                                        conversationId,
+                                        userId,
+                                        message: "request successful", // optional
+                                        contextVariables: [{
+                                            "name": "name",
+                                            "value": name
+                                        }, {
+                                            "name": "feedback",
+                                            "value": feedback
+                                        }, {
+                                            "name": "ranking",
+                                            "value": ranking
+                                        }],
+                                    });
+                                }
                             }
                         }
                     }
