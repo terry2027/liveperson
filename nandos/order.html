@@ -1,91 +1,39 @@
+<!DOCTYPE html>
 <html>
-
-<head>
-
-    <!-- jquery -->
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-    <!-- bootstrap -->
-    <link type="text/css" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
-    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-    <!-- handlebars -->
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
-
-    <!-- alpaca -->
-    <link type="text/css" href="//cdn.jsdelivr.net/npm/alpaca@1.5.27/dist/alpaca/bootstrap/alpaca.min.css" rel="stylesheet" />
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/alpaca@1.5.27/dist/alpaca/bootstrap/alpaca.min.js"></script>
-
-</head>
 
 <body>
 
+    <h1>The form element</h1>
+    <script>
+        function logSubmit(event) {
+            log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
+            event.preventDefault();
+        }
 
+        const form = document.getElementById('form');
+        const log = document.getElementById('log');
+        form.addEventListener('submit', logSubmit);
 
-    <div id="form"></div>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#form").alpaca({
-                "schema": {
-                    "title": "Your Nandos Order",
-                    "description": "Your Nandos Order",
-                    "type": "object",
-                    "properties": {
-                        "name": {
-                            "type": "string",
-                            "title": "Name"
-                        },
-                        "feedback": {
-                            "type": "string",
-                            "title": "Feedback"
-                        },
-                        "ranking": {
-                            "type": "string",
-                            "title": "Ranking",
-                            "enum": ['excellent', 'ok', 'so so']
-                        }
-                    }
-                },
-                "options": {
-                    "fields": {
-                        "userId": {
-                            "type": "hidden"
-                        },
-                        "convId": {
-                            "type": "hidden"
-                        },
-                        "botId": {
-                            "type": "hidden"
-                        }
-                    },
-                    "form": {
-                        "attributes": {
-                            "action": "https://terry2027.github.io/nandos/order_process.html",
-                            "method": "post"
-                        },
-                        "buttons": {
-                            "submit": {
-                                "title": "PERi Me!!!"
-                            }
-                        }
-                    }
-                },
-                "data": {
-                    "userId": queryParams.get('userId'),
-                    "convId": queryParams.get('convId'),
-                    "botId": queryParams.get('botId')
-                },
-                "postRender": function(control) {
-                    var form = control.form;
-                    form.registerSubmitHandler(function() {
-                        alert("userId is: " + control.getValue().userId);
-                        alert("convId is: " + control.getValue().convId);
-                        alert("botId is: " + control.getValue().botId);
-                    });
-                }
-            });
-        });
+        // Get data from query string
+        const queryParams = new URLSearchParams(document.location.search);
+        const userId = queryParams.get('userId');
+        const conversationId = queryParams.get('convId');
+        const botId = queryParams.get('botId');
     </script>
+
+    <form id="form">
+        <label for="name">What is your name?</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="colour">What is your favorite colour?</label>
+        <input type="text" id="colour" name="colour"><br><br>
+        <label for="swallow">What is the land spped velocity of an unladen swallow?</label>
+        <input type="text" id="swallow" name="swallow"><br><br>
+        <button type="submit">Submit form</button>
+    </form>
+
+    <p id="log"></p>
+
+
 </body>
 
 </html>
