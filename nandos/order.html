@@ -179,49 +179,51 @@
     <script>
         function logSubmit(event) {
             log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
+            event.preventDefault();
+
+            // Get data from query string
+            const queryParams = new URLSearchParams(document.location.search);
+            const userId = queryParams.get('userId');
+            const conversationId = queryParams.get('convId');
+            const botId = queryParams.get('botId');
+
             log1.textContent = `userId Submitted: ${userId}`;
             log2.textContent = `convId Submitted: ${conversationId}`;
             log3.textContent = `botId Submitted: ${botId}`;
-            event.preventDefault();
+
+            // Get data from form
+            const name = document.querySelector('input[name="name"]').value;
+            const colour = document.querySelector('input[name="colour"]').value;
+            const swallow = document.querySelector('input[name="swallow"]').value;
+
+            // use correct domain for your region
+            const domain = 'https://sy.bc-intg.liveperson.net/thirdparty-services-0.1/webview';
+            // encode auth string
+            const authString = `${conversationId} || ${botId}`;
+            const auth = await sha256(authString);
+
+            const res = await postData(domain, auth, {
+                botId,
+                conversationId,
+                userId,
+                message: "request successful", // optional
+                contextVariables: [{
+                    "name": "name",
+                    "value": name
+                }, {
+                    "name": "colour",
+                    "value": colour
+                }, {
+                    "name": "swallow",
+                    "value": swallow
+                }],
+            });
+
         }
 
         const form = document.getElementById('form');
         const log = document.getElementById('log');
         form.addEventListener('submit', logSubmit);
-
-        // Get data from query string
-        const queryParams = new URLSearchParams(document.location.search);
-        const userId = queryParams.get('userId');
-        const conversationId = queryParams.get('convId');
-        const botId = queryParams.get('botId');
-
-        // Get data from form
-        const name = document.querySelector('input[name="name"]').value;
-        const colour = document.querySelector('input[name="colour"]').value;
-        const swallow = document.querySelector('input[name="swallow"]').value;
-
-        // use correct domain for your region
-        const domain = 'https://sy.bc-intg.liveperson.net/thirdparty-services-0.1/webview';
-        // encode auth string
-        const authString = `${conversationId} || ${botId}`;
-        const auth = await sha256(authString);
-
-        const res = await postData(domain, auth, {
-            botId,
-            conversationId,
-            userId,
-            message: "request successful", // optional
-            contextVariables: [{
-                "name": "name",
-                "value": name
-            }, {
-                "name": "colour",
-                "value": colour
-            }, {
-                "name": "swallow",
-                "value": swallow
-            }],
-        });
     </script>
 
 
