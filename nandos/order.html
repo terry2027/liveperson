@@ -27,8 +27,8 @@
         $(document).ready(function() {
             $("#form").alpaca({
                 "schema": {
-                    "title": "User Feedback",
-                    "description": "What do you think about Alpaca?",
+                    "title": "Your Nandos Order",
+                    "description": "Your Nandos Order",
                     "type": "object",
                     "properties": {
                         "name": {
@@ -73,7 +73,9 @@
                 "data": {
                     "userId": queryParams.get('userId'),
                     "convId": queryParams.get('convId'),
-                    "botId": queryParams.get('botId')
+                    "botId": queryParams.get('botId'),
+                    "name": queryParams.get('botId'),
+                    "feedback": queryParams.get('userId')
                 }
             });
         });
