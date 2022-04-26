@@ -17,10 +17,16 @@
     </form>
 
     <p id="log"></p>
+    <p id="log1"></p>
+    <p id="log2"></p>
+    <p id="log3"></p>
 
     <script>
         function logSubmit(event) {
             log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
+            log1.textContent = `userId Submitted: ${userId}`;
+            log2.textContent = `convId Submitted: ${convId}`;
+            log3.textContent = `botId Submitted: ${botId}`;
             event.preventDefault();
         }
 
