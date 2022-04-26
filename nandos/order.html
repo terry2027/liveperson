@@ -48,6 +48,14 @@
                 },
                 "options": {
                     "fields": {
+                        "name": {
+                            "size": 50,
+                            "placeholder": queryParams.get('botId')
+                        },
+                        "feedback": {
+                            "size": 50,
+                            "placeholder": queryParams.get('userId')
+                        },
                         "userId": {
                             "type": "hidden"
                         },
@@ -73,9 +81,15 @@
                 "data": {
                     "userId": queryParams.get('userId'),
                     "convId": queryParams.get('convId'),
-                    "botId": queryParams.get('botId'),
-                    "name": queryParams.get('botId'),
-                    "feedback": queryParams.get('userId')
+                    "botId": queryParams.get('botId')
+                },
+                "postRender": function(control) {
+                    var form = control.form;
+                    form.registerSubmitHandler(function() {
+                        alert("userId is: " + control.getValue().userId);
+                        alert("convId is: " + control.getValue().convId);
+                        alert("botId is: " + control.getValue().botId);
+                    });
                 }
             });
         });
