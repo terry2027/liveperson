@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<body>
-
-    <h1>The form element</h1>
+<head>
     <script>
         function logSubmit(event) {
             log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
@@ -20,6 +18,12 @@
         const conversationId = queryParams.get('convId');
         const botId = queryParams.get('botId');
     </script>
+</head>
+
+<body>
+
+    <h1>The form element</h1>
+
 
     <form id="form">
         <label for="name">What is your name?</label>
