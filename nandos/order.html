@@ -1,7 +1,23 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+
+<body>
+
+    <h1>The form element</h1>
+
+    <form id="form">
+        <label for="name">What is your name?</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="colour">What is your favorite colour?</label>
+        <input type="text" id="colour" name="colour"><br><br>
+        <label for="swallow">What is the land spped velocity of an unladen swallow?</label>
+        <input type="text" id="swallow" name="swallow"><br><br>
+        <button type="submit">Submit form</button>
+    </form>
+
+    <p id="log"></p>
+
     <script>
         function logSubmit(event) {
             log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
@@ -18,24 +34,6 @@
         const conversationId = queryParams.get('convId');
         const botId = queryParams.get('botId');
     </script>
-</head>
-
-<body>
-
-    <h1>The form element</h1>
-
-
-    <form id="form">
-        <label for="name">What is your name?</label>
-        <input type="text" id="name" name="name"><br><br>
-        <label for="colour">What is your favorite colour?</label>
-        <input type="text" id="colour" name="colour"><br><br>
-        <label for="swallow">What is the land spped velocity of an unladen swallow?</label>
-        <input type="text" id="swallow" name="swallow"><br><br>
-        <button type="submit">Submit form</button>
-    </form>
-
-    <p id="log"></p>
 
 
 </body>
