@@ -175,6 +175,9 @@
     <p id="log1"></p>
     <p id="log2"></p>
     <p id="log3"></p>
+    <p id="log4"></p>
+    <p id="log5"></p>
+    <p id="log6"></p>
 
     <script>
         function logSubmit(event) {
@@ -192,9 +195,13 @@
             log3.textContent = `botId Submitted: ${botId}`;
 
             // Get data from form
-            /* const name = document.querySelector('input[name="name"]').value;
+            const name = document.querySelector('input[name="name"]').value;
             const colour = document.querySelector('input[name="colour"]').value;
-            const swallow = document.querySelector('input[name="swallow"]').value; */
+            const swallow = document.querySelector('input[name="swallow"]').value;
+
+            log4.textContent = `name in form: ${name}`;
+            log5.textContent = `colour in form: ${colour}`;
+            log6.textContent = `swallow in form: ${swallow}`;
 
             // use correct domain for your region
             //const domain = 'https://sy.bc-intg.liveperson.net/thirdparty-services-0.1/webview';
