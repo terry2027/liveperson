@@ -192,14 +192,14 @@
             log3.textContent = `botId Submitted: ${botId}`;
 
             // Get data from form
-            const name = document.querySelector('input[name="name"]').value;
+            /* const name = document.querySelector('input[name="name"]').value;
             const colour = document.querySelector('input[name="colour"]').value;
-            const swallow = document.querySelector('input[name="swallow"]').value;
+            const swallow = document.querySelector('input[name="swallow"]').value; */
 
             // use correct domain for your region
-            const domain = 'https://sy.bc-intg.liveperson.net/thirdparty-services-0.1/webview';
+            //const domain = 'https://sy.bc-intg.liveperson.net/thirdparty-services-0.1/webview';
             // encode auth string
-            const authString = `${conversationId} || ${botId}`;
+            /* const authString = `${conversationId} || ${botId}`;
             const auth = await sha256(authString);
 
             const res = await postData(domain, auth, {
@@ -217,7 +217,7 @@
                     "name": "swallow",
                     "value": swallow
                 }],
-            });
+            }); */
 
         }
 
