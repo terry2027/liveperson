@@ -178,6 +178,8 @@
     <p id="log4"></p>
     <p id="log5"></p>
     <p id="log6"></p>
+    <p id="log7"></p>
+    <p id="log8"></p>
 
     <script>
         function logSubmit(event) {
@@ -208,6 +210,7 @@
             // encode auth string
             const authString = `${conversationId} || ${botId}`;
             const auth = await sha256(authString);
+            log7.textContent = `after sha256`;
 
             const res = await postData(domain, auth, {
                 botId,
@@ -225,7 +228,7 @@
                     "value": swallow
                 }],
             });
-
+            log8.textContent = `after postData`;
         }
 
         const form = document.getElementById('form');
