@@ -195,9 +195,10 @@
             log3.textContent = `botId Submitted: ${botId}`;
 
             // Get data from form
-            const name = document.querySelector('input[name="name"]').value;
-            const colour = document.querySelector('input[name="colour"]').value;
-            const swallow = document.querySelector('input[name="swallow"]').value;
+            const name = document.getElementById('name').value;
+            const colour = document.getElementById('colour').value;
+            const swallow = document.getElementById('swallow').value;
+            //const swallow = document.querySelector('input[name="swallow"]').value;
 
             log4.textContent = `name in form: ${name}`;
             log5.textContent = `colour in form: ${colour}`;
