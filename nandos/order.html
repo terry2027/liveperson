@@ -198,16 +198,15 @@
             const name = document.getElementById('name').value;
             const colour = document.getElementById('colour').value;
             const swallow = document.getElementById('swallow').value;
-            //const swallow = document.querySelector('input[name="swallow"]').value;
 
             log4.textContent = `name in form: ${name}`;
             log5.textContent = `colour in form: ${colour}`;
             log6.textContent = `swallow in form: ${swallow}`;
 
             // use correct domain for your region
-            //const domain = 'https://sy.bc-intg.liveperson.net/thirdparty-services-0.1/webview';
+            const domain = 'https://sy.bc-intg.liveperson.net/thirdparty-services-0.1/webview';
             // encode auth string
-            /* const authString = `${conversationId} || ${botId}`;
+            const authString = `${conversationId} || ${botId}`;
             const auth = await sha256(authString);
 
             const res = await postData(domain, auth, {
@@ -225,7 +224,7 @@
                     "name": "swallow",
                     "value": swallow
                 }],
-            }); */
+            });
 
         }
 
