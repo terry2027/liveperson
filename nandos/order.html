@@ -442,21 +442,8 @@
         </div> -->
     </form>
 
-
-
-    <p id="log"></p>
-    <p id="log1"></p>
-    <p id="log2"></p>
-    <p id="log3"></p>
-    <p id="log4"></p>
-    <p id="log5"></p>
-    <p id="log6"></p>
-    <p id="log7"></p>
-    <p id="log8"></p>
-
     <script>
         function logSubmit(event) {
-            log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
             event.preventDefault();
 
             // Get data from query string
@@ -464,10 +451,6 @@
             const userId = queryParams.get('userId');
             const conversationId = queryParams.get('convId');
             const botId = queryParams.get('botId');
-
-            log1.textContent = `userId Submitted: ${userId}`;
-            log2.textContent = `convId Submitted: ${conversationId}`;
-            log3.textContent = `botId Submitted: ${botId}`;
 
             //Get selected basting 
             var basting = '';
@@ -496,21 +479,11 @@
                     drinks = drinks_elem[i].value;
             }
 
-            // Get data from form
-            //const name = document.getElementById('name').value;
-            //const colour = document.getElementById('colour').value;
-            //const swallow = document.getElementById('swallow').value;
-
-            log4.textContent = `basting in form: ${basting}`;
-            log5.textContent = `chips in form: ${chips}`;
-            log6.textContent = `drinks in form: ${drinks}`;
-
             // use correct domain for your region
             const domain = 'https://sy.bc-intg.liveperson.net/thirdparty-services-0.1/webview';
             // encode auth string
             const authString = `${conversationId} || ${botId}`;
             const auth = sha256(authString);
-            log7.textContent = `after sha256`;
 
             const res = postData(domain, auth, {
                 botId,
@@ -528,11 +501,9 @@
                     "value": drinks
                 }],
             });
-            log8.textContent = `after postData`;
         }
 
         const form = document.getElementById('form');
-        const log = document.getElementById('log');
         form.addEventListener('submit', logSubmit);
 
         function sha256(s) {
