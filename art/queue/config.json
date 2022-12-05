@@ -1,0 +1,60 @@
+{
+    "sortType": "S1",
+    "fixedFifoProbability": 1,
+    "businessRules": {
+        "transfer": {
+            "transferVelocitiesList": [{
+                    "destinationSkillId": "1313123", //Skill based routing
+                    "velocity": 2
+                },
+                {
+                    "sourceSkillId": "3131231",
+                    "velocity": 3
+                },
+                {
+                    "sourceSkillId": "3131231",
+                    "destinationSkillId": "1313123",
+                    "velocity": 5
+                },
+                {
+                    "numberOfTransfer": 2, //Priority routing
+                    "velocity": 3
+                }
+            ]
+        },
+        "messagingSource": { //Priority Routing
+            "sourceVelocitisList": [{
+                    "messagingSource": "SHARK", //Conversation started in Web Messaging
+                    "velocity": 2
+                },
+                {
+                    "messagingSource": "Whatsapp Business",
+                    "velocity": 3
+                }
+            ]
+        }
+    },
+    "consumerAttributes": { //Priority routing
+        "engagementAttributesRulesList": [{
+            "engagementAttributesConditions": [{
+                    "attribute": "ctmrInfo.info.ctype",
+                    "condition": "equals",
+                    "value": "Gold"
+                },
+                {
+                    "attribute": "ctmrInfo.info.registrationDate",
+                    "condition": "lower",
+                    "value": {
+                        "day": 30,
+                        "month": 11,
+                        "year": 2022
+                    }
+                }
+            ],
+            "appliedLogic": "OR",
+            "velocity": 15,
+            "velocityOperator": "Power",
+            "name": "gold_customer_registed in Nov"
+        }]
+    }
+}
