@@ -1,6 +1,14 @@
 {
     "sortType": "S1",
     "fixedFifoProbability": 1,
+    "uniqueFifoProbabilityType": "ByHour", //Prediction of influx of calls on Monday
+    "fifoProbabilityRangeList": [{ //Prioritize 50% of the calls based on interactiveness 
+        "fromDay": 2,
+        "toDay": 2,
+        "from": 8,
+        "to": 10,
+        "prob": 0.5
+    }],
     "businessRules": {
         "transfer": {
             "transferVelocitiesList": [{

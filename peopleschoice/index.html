@@ -97,6 +97,11 @@
                 customerId: '562'
             }
         });
+        lpTag.section = [ //SET A LIST OF YOUR SITE SECTIONS
+            "electronics", //CAN BE A SECTION OR A SUB-SECTION
+            "user agreement faqs"
+        ];
+
         // Authentication JSMethod for LiveEngage
         var lpGetAuthenticationToken = function(callback) {
             console.log("inside lpGetAuthenticationToken!");
