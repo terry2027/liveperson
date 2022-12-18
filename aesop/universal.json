@@ -1,0 +1,215 @@
+{
+    "type": "carousel",
+    "padding": 10,
+    "elements": [{
+            "type": "vertical",
+            "elements": [{
+                    "type": "image",
+                    "url": "{$botContext.product1_image_url}",
+                    "click": {
+                        "actions": [{
+                            "type": "link",
+                            "uri": "https://www.aesop.com/au/p/skin/dry-skin-type/sage-zinc-facial-hydrating-lotion-spf15/",
+                            "target": "blank"
+                        }]
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "{$botContext.product1_name}",
+                    "tooltip": "{$botContext.product1_name}",
+                    "style": {
+                        "bold": true,
+                        "size": "large",
+                        "color": "#000000",
+                        "background-color": "#FFFEF2"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "{$botContext.product1_size}&nbsp;&nbsp;/&nbsp;&nbsp;{$botContext.product1_price}<br>Suited to:&nbsp;&nbsp;{$botContext.product1_suited_to}<br>Skin feel:&nbsp;&nbsp; {$botContext.product1_skin_feel}",
+                    "style": {
+                        "bold": true,
+                        "size": "medium",
+                        "color": "#000000",
+                        "background-color": "#FFFEF2"
+                    }
+                },
+                {
+                    "title": "View Details",
+                    "tooltip": "Click me!",
+                    "type": "button",
+                    "style": {
+                        "color": "#FFF",
+                        "background-color": "#000000",
+                        "size": "medium"
+                    },
+                    "click": {
+                        "actions": [{
+                            "type": "link",
+                            "uri": "https://www.aesop.com/au/p/skin/dry-skin-type/sage-zinc-facial-hydrating-lotion-spf15/",
+                            "target": "blank"
+                        }]
+                    }
+                },
+                {
+                    "title": "Add To Cart",
+                    "tooltip": "Click me!",
+                    "type": "button",
+                    "style": {
+                        "color": "#FFF",
+                        "background-color": "#000000",
+                        "size": "medium"
+                    },
+                    "click": {
+                        "actions": [{
+                            "type": "link",
+                            "uri": "",
+                            "target": "blank"
+                        }]
+                    }
+                }
+            ]
+        },
+        {
+            "type": "vertical",
+            "elements": [{
+                    "type": "image",
+                    "url": "{$botContext.product2_image_url}",
+                    "click": {
+                        "actions": [{
+                            "type": "link",
+                            "uri": "https://www.aesop.com/au/p/skin/oily-skin-type/fabulous-face-oil/",
+                            "target": "blank"
+                        }]
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "{$botContext.product2_name}",
+                    "tooltip": "{$botContext.product2_name}",
+                    "style": {
+                        "bold": true,
+                        "size": "large",
+                        "color": "#000000",
+                        "background-color": "#FFFEF2"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "{$botContext.product2_size}&nbsp;/ &nbsp;{$botContext.product2_price}<br>Suited to:&nbsp;&nbsp;{$botContext.product2_suited_to}<br>Skin feel:&nbsp;&nbsp;{$botContext.product2_skin_feel}",
+                    "style": {
+                        "bold": true,
+                        "size": "medium",
+                        "color": "#000000",
+                        "background-color": "#FFFEF2"
+                    }
+                },
+                {
+                    "title": "View Details",
+                    "tooltip": "Click me!",
+                    "type": "button",
+                    "style": {
+                        "color": "#FFF",
+                        "background-color": "#000000",
+                        "size": "medium"
+                    },
+                    "click": {
+                        "actions": [{
+                            "type": "link",
+                            "uri": "https://www.aesop.com/au/p/skin/oily-skin-type/fabulous-face-oil/",
+                            "target": "blank"
+                        }]
+                    }
+                },
+                {
+                    "title": "Add To Cart",
+                    "tooltip": "Click me!",
+                    "type": "button",
+                    "style": {
+                        "color": "#FFF",
+                        "background-color": "#000000",
+                        "size": "medium"
+                    },
+                    "click": {
+                        "actions": [{
+                            "type": "link",
+                            "uri": "",
+                            "target": "blank"
+                        }]
+                    }
+                }
+            ]
+        },
+        {
+            "type": "vertical",
+            "elements": [{
+                    "type": "image",
+                    "url": "{$botContext.product3_image_url}",
+                    "click": {
+                        "actions": [{
+                            "type": "link",
+                            "uri": "https://www.aesop.com/au/p/skin/sun-care-spf/immediate-moisture-facial-hydrosol/",
+                            "target": "blank"
+                        }]
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "{$botContext.product3_name}",
+                    "tooltip": "{$botContext.product3_name}",
+                    "style": {
+                        "bold": true,
+                        "size": "large",
+                        "color": "#000000",
+                        "background-color": "#FFFEF2"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "{$botContext.product3_size}&nbsp;/ &nbsp;{$botContext.product3_price}<br>Suited to:&nbsp;&nbsp;{$botContext.product3_suited_to}<br>Skin feel:&nbsp;&nbsp;{$botContext.product3_skin_feel}",
+                    "style": {
+                        "bold": true,
+                        "size": "medium",
+                        "color": "#000000",
+                        "background-color": "#FFFEF2"
+                    }
+                },
+                {
+                    "title": "View Details",
+                    "tooltip": "Click me!",
+                    "type": "button",
+                    "style": {
+                        "color": "#FFF",
+                        "background-color": "#000000",
+                        "size": "medium"
+                    },
+                    "click": {
+                        "actions": [{
+                            "type": "link",
+                            "uri": "https://www.aesop.com/au/p/skin/sun-care-spf/immediate-moisture-facial-hydrosol/",
+                            "target": "blank"
+                        }]
+                    }
+                },
+                {
+                    "title": "Add To Cart",
+                    "tooltip": "Click me!",
+                    "type": "button",
+                    "style": {
+                        "color": "#FFF",
+                        "background-color": "#000000",
+                        "size": "medium"
+                    },
+                    "click": {
+                        "actions": [{
+                            "type": "link",
+                            "uri": "",
+                            "target": "blank"
+                        }]
+                    }
+                }
+            ]
+        }
+    ]
+}
