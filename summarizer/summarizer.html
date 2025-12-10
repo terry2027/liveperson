@@ -90,17 +90,9 @@
         function getConversationId() {
             // The path to the Conversation ID in the Public Model Structure is "chatInfo.rtSessionId" [2].
             const windowDiv = document.getElementById('response-window');
-            var output = null;
+            //var output = null;
 
-            // Check if the SDK object exists before calling methods.
-            if (typeof lpTag !== 'undefined' && lpTag.agentSDK) {
-                // Use the get method to fetch the data once [5].
-                // Note: The 'get' method retrieves the current state of data [5].
-                // For scenarios requiring live updates, 'bind' is typically preferred [6], [7].
-                lpTag.agentSDK.get(pathToData, onSuccess, onError);
-            } else {
-                console.error("Agent SDK not defined. Ensure initialization ran successfully.");
-            }
+            
 
             //var pathToAcctID = "chatInfo.accountId";
             //lpTag.agentSDK.get(pathToAcctID, onAcctIdSuccess, onAcctIdError);
@@ -129,7 +121,6 @@
             };
         
             var pathToData = "chatInfo.rtSessionId";
-            lpTag.agentSDK.get(pathToData, onSuccess, onError);
 
             /**
             * Callback function executed upon successful retrieval of data.
@@ -163,6 +154,16 @@
         };
         
             // Check if the SDK object exists before calling methods.
+            if (typeof lpTag !== 'undefined' && lpTag.agentSDK) {
+                // Use the get method to fetch the data once [5].
+                // Note: The 'get' method retrieves the current state of data [5].
+                // For scenarios requiring live updates, 'bind' is typically preferred [6], [7].
+                lpTag.agentSDK.get(pathToData, onSuccess, onError);
+            } else {
+                console.error("Agent SDK not defined. Ensure initialization ran successfully.");
+            }
+
+             // Check if the SDK object exists before calling methods.
             if (typeof lpTag !== 'undefined' && lpTag.agentSDK) {
                 // Use the get method to fetch the data once [5].
                 // Note: The 'get' method retrieves the current state of data [5].
