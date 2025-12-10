@@ -90,7 +90,7 @@
         function getConversationId() {
             //get the response window
             const windowDiv = document.getElementById('response-window');
-            
+
             // The path to the Conversation ID in the Public Model Structure is "chatInfo.rtSessionId" [2].
             var pathToData = "chatInfo.rtSessionId";
             lpTag.agentSDK.get(pathToData, onSuccess, onError);
@@ -104,11 +104,11 @@
                 if (data) {
                     console.log("Successfully retrieved Conversation ID:", data);
                     document.getElementById('output').innerText = "Conversation ID: " + data;
-                    windowDiv.innerHTML = "Successfully retrieved Conversation ID:", data;
+                    windowDiv.textContent = "Successfully retrieved Conversation ID:", data;
                 } else {
                     console.warn("Conversation ID data is currently unavailable (data is null).");
                     document.getElementById('output').innerText = "Conversation ID not available. Is a conversation active?";
-                    windowDiv.innerHTML = "Conversation ID data is currently unavailable (data is null).";
+                    windowDiv.textContent = "Conversation ID data is currently unavailable (data is null).";
                 }
             };
 
