@@ -90,6 +90,7 @@
         function getConversationId() {
             // The path to the Conversation ID in the Public Model Structure is "chatInfo.rtSessionId" [2].
             var pathToData = "chatInfo.rtSessionId";
+            lpTag.agentSDK.get(pathToData, onSuccess, onError);
 
             /**
              * Callback function executed upon successful retrieval of data.
