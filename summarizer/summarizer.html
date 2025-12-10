@@ -103,7 +103,7 @@
             }
 
             var pathToAcctID = "chatInfo.accountId";
-            lpTag.agentSDK.get(pathToAcctID, onAcctIdSuccess, onAcctIdError);
+            //lpTag.agentSDK.get(pathToAcctID, onAcctIdSuccess, onAcctIdError);
 
             var onAcctIdSuccess = function (data) {
                 // Log and display the retrieved data.
@@ -129,7 +129,7 @@
             };
         
             var pathToData = "chatInfo.rtSessionId";
-            //lpTag.agentSDK.get(pathToData, onSuccess, onError);
+            lpTag.agentSDK.get(pathToData, onSuccess, onError);
 
             /**
             * Callback function executed upon successful retrieval of data.
