@@ -88,6 +88,9 @@
          * This is triggered by a user action (button click).
          */
         function getConversationId() {
+            //get the response window
+            const windowDiv = document.getElementById('response-window');
+            
             // The path to the Conversation ID in the Public Model Structure is "chatInfo.rtSessionId" [2].
             var pathToData = "chatInfo.rtSessionId";
             lpTag.agentSDK.get(pathToData, onSuccess, onError);
