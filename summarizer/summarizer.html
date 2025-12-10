@@ -86,60 +86,23 @@
         /**
          * Function to retrieve the Conversation ID from the Agent Workspace SDK.
          * This is triggered by a user action (button click).
-        */
+         */
         function getConversationId() {
             // The path to the Conversation ID in the Public Model Structure is "chatInfo.rtSessionId" [2].
-            const windowDiv = document.getElementById('response-window');
-            //var output = null;
-
-            
-
-            //var pathToAcctID = "chatInfo.accountId";
-            //lpTag.agentSDK.get(pathToAcctID, onAcctIdSuccess, onAcctIdError);
-
-            var onAcctIdSuccess = function (data) {
-                // Log and display the retrieved data.
-                if (data) {
-                    console.log("Successfully retrieved Account ID:", data);
-                    document.getElementById('output').innerText = "Account ID: " + data;
-                    //output = output + "Successfully retrieved Account ID:" + data + "\n";
-                    windowDiv.innerHTML = "Successfully retrieved Account ID:" + data;
-                    //windowDiv.innerHTML = output;
-                } else {
-                    console.warn("Account ID data is currently unavailable (data is null).");
-                    document.getElementById('output').innerText = "Account ID not available. Is a conversation active?";
-                    //output = output + "Account ID not available. Is a conversation active?" + "/n";
-                    windowDiv.innerHTML = "Account ID not available. Is a conversation active?";
-                    //windowDiv.innerHTML = output;
-                }
-            };
-
-            var onAcctIdError = function (err) {
-                // Handle the error during the get operation [5].
-                console.error("Error retrieving Account ID:", err);
-                document.getElementById('output').innerText = "Error: Could not retrieve Account ID.";
-            };
-        
             var pathToData = "chatInfo.rtSessionId";
 
             /**
-            * Callback function executed upon successful retrieval of data.
-            * @param {string} data - The retrieved Conversation ID (rtSessionId).
-            */
+             * Callback function executed upon successful retrieval of data.
+             * @param {string} data - The retrieved Conversation ID (rtSessionId).
+             */
             var onSuccess = function (data) {
                 // Log and display the retrieved data.
                 if (data) {
                     console.log("Successfully retrieved Conversation ID:", data);
                     document.getElementById('output').innerText = "Conversation ID: " + data;
-                    //output = output + "Successfully retrieved Conversation ID:" + data;
-                    windowDiv.innerHTML = "Successfully retrieved Conversation ID:" + data;
-                    //windowDiv.innerHTML = output;
                 } else {
                     console.warn("Conversation ID data is currently unavailable (data is null).");
                     document.getElementById('output').innerText = "Conversation ID not available. Is a conversation active?";
-                    //output = output + "Conversation ID not available. Is a conversation active?";
-                    windowDiv.innerHTML = "Conversation ID not available. Is a conversation active?";
-                    //windowDiv.innerHTML = output;
                 }
             };
 
@@ -148,11 +111,11 @@
              * @param {object} err - The error object.
              */
             var onError = function (err) {
-            // Handle the error during the get operation [5].
-            console.error("Error retrieving Conversation ID:", err);
-            document.getElementById('output').innerText = "Error: Could not retrieve Conversation ID.";
-        };
-        
+                // Handle the error during the get operation [5].
+                console.error("Error retrieving Conversation ID:", err);
+                document.getElementById('output').innerText = "Error: Could not retrieve Conversation ID.";
+            };
+            
             // Check if the SDK object exists before calling methods.
             if (typeof lpTag !== 'undefined' && lpTag.agentSDK) {
                 // Use the get method to fetch the data once [5].
@@ -162,21 +125,7 @@
             } else {
                 console.error("Agent SDK not defined. Ensure initialization ran successfully.");
             }
-
-             // Check if the SDK object exists before calling methods.
-            if (typeof lpTag !== 'undefined' && lpTag.agentSDK) {
-                // Use the get method to fetch the data once [5].
-                // Note: The 'get' method retrieves the current state of data [5].
-                // For scenarios requiring live updates, 'bind' is typically preferred [6], [7].
-                lpTag.agentSDK.get(pathToData, onSuccess, onError);
-            } else {
-                console.error("Agent SDK not defined. Ensure initialization ran successfully.");
-            }
-
-            //Print output to window
-            //windowDiv.innerHTML = output;
         }
-
 
         /**
  * Function to initialize the Agent Widget SDK and set up event listeners.
