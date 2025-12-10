@@ -93,7 +93,6 @@
 
             // The path to the Conversation ID in the Public Model Structure is "chatInfo.rtSessionId" [2].
             var pathToData = "chatInfo.rtSessionId";
-            lpTag.agentSDK.get(pathToData, onSuccess, onError);
 
             /**
              * Callback function executed upon successful retrieval of data.
@@ -103,11 +102,9 @@
                 // Log and display the retrieved data.
                 if (data) {
                     console.log("Successfully retrieved Conversation ID:", data);
-                    document.getElementById('output').innerText = "Conversation ID: " + data;
                     windowDiv.innerText = "Successfully retrieved Conversation ID: " + data;
                 } else {
                     console.warn("Conversation ID data is currently unavailable (data is null).");
-                    document.getElementById('output').innerText = "Conversation ID not available. Is a conversation active?";
                     windowDiv.innerText = "Conversation ID data is currently unavailable (data is null).";
                 }
             };
@@ -119,7 +116,7 @@
             var onError = function (err) {
                 // Handle the error during the get operation [5].
                 console.error("Error retrieving Conversation ID:", err);
-                document.getElementById('output').innerText = "Error: Could not retrieve Conversation ID.";
+                windowDiv.innerText = "Error: Could not retrieve Conversation ID.";
             };
             
             // Check if the SDK object exists before calling methods.
