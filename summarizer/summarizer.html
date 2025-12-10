@@ -140,15 +140,15 @@
                 if (data) {
                     console.log("Successfully retrieved Conversation ID:", data);
                     document.getElementById('output').innerText = "Conversation ID: " + data;
-                    output = output + "Successfully retrieved Conversation ID:" + data;
-                    //windowDiv.innerHTML = "Successfully retrieved Conversation ID:" + data;
-                    windowDiv.innerHTML = output;
+                    //output = output + "Successfully retrieved Conversation ID:" + data;
+                    windowDiv.innerHTML = "Successfully retrieved Conversation ID:" + data;
+                    //windowDiv.innerHTML = output;
                 } else {
                     console.warn("Conversation ID data is currently unavailable (data is null).");
                     document.getElementById('output').innerText = "Conversation ID not available. Is a conversation active?";
-                    output = output + "Conversation ID not available. Is a conversation active?";
-                    //windowDiv.innerHTML = "Conversation ID not available. Is a conversation active?";
-                    windowDiv.innerHTML = output;
+                    //output = output + "Conversation ID not available. Is a conversation active?";
+                    windowDiv.innerHTML = "Conversation ID not available. Is a conversation active?";
+                    //windowDiv.innerHTML = output;
                 }
             };
 
@@ -173,7 +173,7 @@
             }
 
             //Print output to window
-            windowDiv.innerHTML = output;
+            //windowDiv.innerHTML = output;
         }
 
 
