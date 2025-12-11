@@ -83,13 +83,28 @@
     </div>
  
     <script>
+        const accountId = null;
+        const convId = null;
+
+        function getSummary () {
+            //get the response window
+            const windowDiv = document.getElementById('response-window');
+
+            // Call function to getConversationId
+            getConversationId;
+
+            // Call function to getAccountId
+            getAccountId;
+
+            windowDiv.innerText = "Conversation ID: " + convId + " Account ID: " + accountId;
+
+        }
+
         /**
          * Function to retrieve the Conversation ID from the Agent Workspace SDK.
          * This is triggered by a user action (button click).
          */
         function getConversationId() {
-            //get the response window
-            const windowDiv = document.getElementById('response-window');
 
             // The path to the Conversation ID in the Public Model Structure is "chatInfo.rtSessionId" [2].
             var pathToData = "chatInfo.rtSessionId";
@@ -102,10 +117,11 @@
                 // Log and display the retrieved data.
                 if (data) {
                     console.log("Successfully retrieved Conversation ID:", data);
-                    windowDiv.innerText = "Successfully retrieved Conversation ID: " + data;
+                    //windowDiv.innerText = "Successfully retrieved Conversation ID: " + data;
+                    convId = data;
                 } else {
                     console.warn("Conversation ID data is currently unavailable (data is null).");
-                    windowDiv.innerText = "Conversation ID data is currently unavailable (data is null).";
+                    //windowDiv.innerText = "Conversation ID data is currently unavailable (data is null).";
                 }
             };
 
@@ -116,7 +132,45 @@
             var onError = function (err) {
                 // Handle the error during the get operation [5].
                 console.error("Error retrieving Conversation ID:", err);
-                windowDiv.innerText = "Error: Could not retrieve Conversation ID.";
+                //windowDiv.innerText = "Error: Could not retrieve Conversation ID.";
+            };
+            
+            // Check if the SDK object exists before calling methods.
+            if (typeof lpTag !== 'undefined' && lpTag.agentSDK) {
+                // Use the get method to fetch the data once [5].
+                // Note: The 'get' method retrieves the current state of data [5].
+                // For scenarios requiring live updates, 'bind' is typically preferred [6], [7].
+                lpTag.agentSDK.get(pathToData, onSuccess, onError);
+            } else {
+                console.error("Agent SDK not defined. Ensure initialization ran successfully.");
+            }
+        }
+
+        function getAccountId() {
+           // The path to the Conversation ID in the Public Model Structure is "chatInfo.rtSessionId" [2].
+            var pathToData = "chatInfo.accountId";
+
+            /**
+             * Callback function executed upon successful retrieval of data.
+             * @param {string} data - The retrieved Account ID (accountId).
+             */
+            var onSuccess = function (data) {
+                // Log and display the retrieved data.
+                if (data) {
+                    console.log("Successfully retrieved Account ID:", data);
+                    accountId = data;
+                } else {
+                    console.warn("Conversation ID data is currently unavailable (data is null).");
+                }
+            };
+
+            /**
+             * Callback function executed if an error occurs during data retrieval.
+             * @param {object} err - The error object.
+             */
+            var onError = function (err) {
+                // Handle the error during the get operation [5].
+                console.error("Error retrieving Account ID:", err);
             };
             
             // Check if the SDK object exists before calling methods.
@@ -153,7 +207,7 @@
 
                 // 3. Attach the retrieval function to the button click event.
                 if (button) {
-                    button.addEventListener('click', getConversationId);
+                    button.addEventListener('click', getSummary);
                 }
                 
             } else {
