@@ -68,6 +68,7 @@
         }
     </style>
     <script src="https://lpcdn.lpsnmedia.net/webagent/client-SDK.min.js"></script>
+    <script src="config.js"></script>
 </head>
 <body>
 
@@ -85,20 +86,37 @@
     <script>
         async function getSummary () {
             const windowDiv = document.getElementById('response-window');
-            windowDiv.innerText = "Fetching data...";
+            windowDiv.innerText = "Fetching conversation data...";
 
             try {
-                // Promise.all runs both functions in parallel and waits for both to complete
+                // Step 1: Get Conversation ID and Account ID concurrently
                 const [convId, accountId] = await Promise.all([
                     getConversationId(),
                     getAccountId()
                 ]);
 
-                windowDiv.innerText = "Conversation ID: " + convId + "\nAccount ID: " + accountId;
+                // Update UI to show basic info if needed, or just proceed
+                windowDiv.innerText = `Conversation ID: ${convId || 'N/A'}\nAccount ID: ${accountId || 'N/A'}\nFetching transcript...`;
+
+                // Step 2: Retrieve transcript, which depends on convId and accountId
+                if (!convId || !accountId) {
+                    throw new Error("Conversation ID or Account ID not available to fetch transcript.");
+                }
+                const transcript = await retrieveConversationTranscript(convId, accountId);
+
+                // Step 3: Display transcript (assuming transcript is an object,
+                // you might want to format it better)
+                // For demonstration, let's just stringify it or extract specific parts.
+                if (transcript) {
+                    windowDiv.innerText = `Conversation ID: ${convId}\nAccount ID: ${accountId}\n\nTranscript:\n${JSON.stringify(transcript, null, 2)}`;
+                } else {
+                    windowDiv.innerText = `Conversation ID: ${convId}\nAccount ID: ${accountId}\n\nTranscript: Not available.`;
+                }
+                
             } catch (error) {
-                console.error("Failed to get summary data:", error);
-                windowDiv.innerText = "Error: Could not fetch summary data. See console for details.";
-            }
+                console.error("Failed to get summary or transcript data:", error);
+                windowDiv.innerText = `Error: ${error.message || "Could not fetch summary data."} See console for details.`;
+            } 
         }
 
         /**
@@ -177,8 +195,95 @@
             }
         }
 
+        async function getMessagingHistoryDomain(accountId) {
+            const domainApiUrl = `https://api.liveperson.net/api/account/` + accountId + `/service/msgHist/baseURI.json?version=1.0`; // Request URL structure [3]
+            
+            // NOTE: This initial Domain API call may not require a token, 
+            // but subsequent data calls certainly will.
+            try {
+                const response = await fetch(domainApiUrl);
+                const data = await response.json();
+                
+                // Assuming the response structure returns baseURIs array (as per source example)
+                const msgHistBaseURI = data.baseURIs.find(uri => uri.service === "msgHist")?.baseURI;
+                
+                if (msgHistBaseURI) {
+                    return `https://${msgHistBaseURI}`;
+                }
+                throw new Error("Failed to retrieve msgHist domain.");
+            } catch (error) {
+                console.error("Domain API error:", error);
+                throw error;
+            }
+        }
+
+        // Placeholder for a function to securely retrieve the Bearer Token
+        // IMPORTANT: Credentials (username/password or client secrets) must be securely handled 
+        // and NEVER stored in client-side JavaScript.
+        async function getAuthToken(accountId) {
+            // In a real application, this would involve calling the Login Service API 
+            // or the OAuth 2.0 Token endpoint [2, 4].
+            // This now reads the token from the global APP_CONFIG object.
+            const token = window.APP_CONFIG.AUTH_TOKEN;
+            return token;
+        }
+
+        /* Function to retrieve the transcript of a specific conversation ID.
+        * This MUST be executed securely on a backend server or LP Function.
+        * 
+        * @param {string} conversationId - The ID retrieved from the Agent Widget SDK (chatInfo.rtSessionId)
+        * @param {string} accountId - Your LivePerson Account ID
+        */
+        async function retrieveConversationTranscript(conversationId, accountId) {
+            // --- Step 1 & 2: Get Domain and Authorization Token ---
+            const baseDomain = await getMessagingHistoryDomain(accountId); 
+            const authToken = await getAuthToken(accountId);
+            
+            // --- Step 3: Construct API Call ---
+            const API_URL = baseDomain + `/messaging_history/api/account/` + accountId + `/conversations/conversation/search`; // Endpoint structure [6]
+
+            const requestBody = {
+                // Specify the ID of the conversation obtained from the Agent Widget SDK
+                "conversationId": conversationId, // Conditional, as only one ID is provided [7]
+                
+                // Request the actual message content/transcript
+                "contentToRetrieve": ["messageRecords"], // This value retrieves conversation lines/transcript data [7]
+
+                // Mandatory URL parameter (also sent in the body via POST endpoint) 
+                // Described as mandatory URL parameter in search request, often mapped to source in body for POST endpoint.
+                "source": "LP_Widget_Transcript_Fetch" // Required source parameter (max 20 chars) [6]
+            };
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST', // Messaging Interactions API uses POST for retrieval [6, 8]
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // Authorization header using the retrieved token
+                        'Authorization': `Bearer ${authToken}` 
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API call failed with status: ${response.status}`);
+                }
+
+                const transcriptData = await response.json();
+
+                // The response schema is defined by the "Conversations method" response [9].
+                console.log("Transcript Retrieved successfully:", transcriptData);
+                return transcriptData;
+                
+            } catch (error) {
+                console.error("Error retrieving transcript:", error);
+                return null;
+            }
+        }
+
         window.onload = initializeAgentWidgetSDK;
         
+
         /* The original commented out code remains below */
         /* async function fetchSummary() {
             const button = document.getElementById('generate-btn');
