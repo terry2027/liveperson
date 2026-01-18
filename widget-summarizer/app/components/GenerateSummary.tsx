@@ -1,9 +1,10 @@
 'use client';
 import React, { useEffect, useState, useCallback } from 'react';
+import { SummaryDataType } from '../../types/global'; // Import SummaryDataType
 
 // Define the props interface for GenerateSummary
 interface GenerateSummaryProps {
-  setSummaryData: React.Dispatch<React.SetStateAction<any>>;
+  setSummaryData: React.Dispatch<React.SetStateAction<SummaryDataType>>;
 }
 
 // Define a placeholder for the path to data
@@ -33,7 +34,7 @@ const GenerateSummary: React.FC<GenerateSummaryProps> = ({ setSummaryData }) => 
                 setSummaryData(data); // Update parent state with retrieved data
             } catch (error) {
                 console.error("Error during SDK initialization or data retrieval:", error);
-                setSummaryData({ error: error.message || "Failed to retrieve data" });
+                setSummaryData({ error: (error as Error).message || "Failed to retrieve data" });
             }
         } else {
             console.error("lpTag.agentSDK not available. Check if the SDK script is correctly loaded and whitelisted.");
@@ -51,7 +52,9 @@ const GenerateSummary: React.FC<GenerateSummaryProps> = ({ setSummaryData }) => 
 
         // Check if the script is already loaded when the component mounts
         if (typeof window.lpTag !== 'undefined' && window.lpTag.agentSDK) {
-            initializeSdk();
+            setTimeout(() => {
+                initializeSdk();
+            }, 0);
         }
 
         return () => {

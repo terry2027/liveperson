@@ -1,9 +1,10 @@
 'use client';
 import React from 'react';
+import { SummaryDataType } from '../../types/global'; // Import SummaryDataType
 
 // Define the props interface for SummaryWindow
 interface SummaryWindowProps {
-  summaryData: string; // Using 'any' for flexibility, can be refined later
+  summaryData: SummaryDataType; // Using 'any' for flexibility, can be refined later
 }
 
 const SummaryWindow: React.FC<SummaryWindowProps> = ({ summaryData }) => {
