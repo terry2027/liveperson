@@ -1,3 +1,7 @@
+declare module "*.css" {
+  export default "" as string;
+}
+
 declare global {
   interface Window {
     lpTag: {
@@ -12,5 +16,6 @@ declare global {
 export type SummaryDataType = {
   error?: string;
   data?: string;
+
 } | null;
 
